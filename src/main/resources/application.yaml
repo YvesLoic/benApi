@@ -1,0 +1,40 @@
+server:
+  port: 1111
+
+application:
+  description:
+  version:
+  security:
+    expireAccessToken: 3600000 # 1h
+    expireRefreshToken: 43200000 # 12h
+    secretKey: BenApplication@
+    header: Authorization
+    prefix: Bearer
+    issuer: BearerToken
+    refreshTokenRoute: /refreshToken
+    usernameField: username
+    passwordField: password
+
+spring:
+  application:
+    name: 'API Backend Benevoles'
+  datasource:
+    url: jdbc:mysql://localhost:3306/benevole
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    #        format_sql: true
+    hibernate:
+      ddl-auto: update
+springdoc:
+  api-docs:
+    path: /api-doc
+  swagger-ui:
+    path: /documentation
+    display-request-duration: true
